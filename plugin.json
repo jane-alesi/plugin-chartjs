@@ -4,7 +4,7 @@
     "org": null,
     "code": "function render_chart(params) {\n    const { chartType, options, title, data } = params;\n    const dataString = JSON.stringify(data)\n        .replace(/\\\\/g, '\\\\\\\\')\n        .replace(/\"/g, '\\\\\"')\n        .replace(/\\n/g, '\\\\n')\n        .replace(/\\r/g, '\\\\r')\n        .replace(/\\t/g, '\\\\t');\n\n    const optionsString = JSON.stringify(options)\n        .replace(/\\\\/g, '\\\\\\\\')\n        .replace(/\"/g, '\\\\\"')\n        .replace(/\\n/g, '\\\\n')\n        .replace(/\\r/g, '\\\\r')\n        .replace(/\\t/g, '\\\\t');\n\n    const htmlString = `\n    <\\!DOCTYPE html>\n    <\\html>\n    <\\head>\n        <\\title>${title}<\\/title>\n        <\\script src=\"https:\\/\\/cdn.jsdelivr.net\\/npm\\/chart.js\"><\\/script>\n    <\\/head>\n    <\\body>\n        <\\canvas id=\"generated-chart\" style=\"width: 100\\%; height: 90vh;\"><\\/canvas>\n        <\\script>\n            var ctx = document.getElementById('generated-chart').getContext('2d');\n            var chart = new Chart(ctx, {\n                type: '${chartType}',\n                data: JSON.parse(\"${dataString}\"),\n                options: JSON.parse(\"${optionsString}\")\n            });\n        <\\/script>\n    <\\/body>\n    <\\/html>\n    `;\n    return htmlString;\n}\n",
     "uuid": "a23a5503-9b5b-406b-bd8c-f93ca2c39568",
-    "emoji": "🧩",
+    "emoji": "📊",
     "title": " satware® AI Chart JS Plugin",
     "system": false,
     "iconURL": "",
@@ -179,11 +179,11 @@
                         },
                         "aspectRatio": {
                             "type": "number",
-                            "description": "Canvas aspect ratio (i.e. width \\/ height, a value of 1 representing a square canvas). Note that this option is ignored if the height is explicitly defined either as attribute or via the style. The default value varies by chart type; Radial charts (doughnut, pie, polarArea, radar) default to 1 and others default to 2."
+                            "description": "Canvas aspect ratio (i.e. width / height, a value of 1 representing a square canvas). Note that this option is ignored if the height is explicitly defined either as attribute or via the style. The default value varies by chart type; Radial charts (doughnut, pie, polarArea, radar) default to 1 and others default to 2."
                         },
                         "maintainAspectRatio": {
                             "type": "boolean",
-                            "description": "When true, the chart maintains the original canvas aspect ratio (width\\/height) when resizing."
+                            "description": "When true, the chart maintains the original canvas aspect ratio (width/height) when resizing."
                         }
                     },
                     "description": "Additional options for the Chart.js chart"
